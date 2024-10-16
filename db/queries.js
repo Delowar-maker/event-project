@@ -1,8 +1,9 @@
 import { eventModel } from "@/models/event-models";
+import { replaceMongoIdInArray } from "@/utils/data-util";
 
 async function getAllEvents() {
     const allEvents = await eventModel.find().lean();
-    return (allEvents);
+    return replaceMongoIdInArray(allEvents);
 }
 
 export {
