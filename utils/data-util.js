@@ -1,12 +1,5 @@
-// export const replaceMongoIdInArray = (array) => {
-//     return array.map((item) => {
-//         if (item._id) {
-//             return { ...item, _id: item._id.toString() };
-//         }
-//         return item;
-//     });
-// }
 
+//utils function _id replece id how mongodbd
 export const replaceMongoIdInArray = (array) => {
     const mappedArray = array.map(item => {
         return {
