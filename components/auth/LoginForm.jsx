@@ -1,7 +1,23 @@
+"use client";
+
+import { performLogin } from "@/app/action";
+import { useState } from "react";
+
 const LoginForm = () => {
+  const [error, setError] = useState("");
+  async function onSubmit(e) {
+    e.preventDefault();
+    try {
+      const formData = new FormData(e.target);
+      await performLogin(formData);
+    } catch (error) {
+      setError(error.message);
+    }
+  }
   return (
     <>
-      <form className="login-form">
+      <div className="my-2 text-red-500">{error}</div>
+      <form className="login-form" onSubmit={onSubmit}>
         <div>
           <label htmlFor="email">Email Address</label>
           <input type="email" name="email" id="email" />
